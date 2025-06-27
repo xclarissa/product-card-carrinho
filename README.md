@@ -29,6 +29,7 @@ O projeto simula um **card de produto** com botão de "Adicionar ao carrinho", i
 ---
 
 ## 📁 Estrutura do projeto
+```bash
 src/
 ├── contexts/
 │   └── CartContext/
@@ -51,7 +52,7 @@ src/
 │
 ├── App.tsx
 └── main.tsx
-
+```
 ---
 
 ## 🧭 Como rodar o projeto localmente
