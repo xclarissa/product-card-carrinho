@@ -61,16 +61,21 @@ src/
 git clone https://github.com/seu-usuario/product-card.git
 
 2 - Instale as dependências:
- 
-npm install
-# ou
-yarn install
+```
+$npm install
 
+ou
+
+$yarn install
+```
 3 - Inicie o servidor local:
+```
+$npm start
 
-npm start
-# ou
-yarn start
+ou
+
+$yarn start
+```
 
 
 ## 🧪 Testes automatizados
@@ -84,8 +89,8 @@ Os testes foram escritos com **React Testing Library** e **Jest** para validar:
 Para rodar os testes:
 
 ```bash
-npm test
-# ou
-yarn test
-
+$npm test
+ou
+$yarn test
+```
 ---
