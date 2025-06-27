@@ -30,15 +30,27 @@ O projeto simula um **card de produto** com botão de "Adicionar ao carrinho", i
 
 ## 📁 Estrutura do projeto
 src/
+├── contexts/
+│   └── CartContext/
+│       ├── index.tsx
+│       └── CartContext.test.tsx 
 ├── components/
-│ ├── ProductCard.tsx
-│ └── CartContext.tsx
+│   ├── ProductCard/
+│   │   ├── index.tsx
+│   │   └── ProductCard.test.tsx
+│   ├── AddToCartButton/
+│   │   ├── index.tsx
+│   │   └── AddToCartButton.test.tsx
+│   └── ProductImage/
+│       ├── index.tsx
+│       └── ProductImage.test.tsx
+│   
 ├── styles/
-│ ├── global.ts
-│ └── theme.ts
-├── tests/
-│ └── ProductCard.test.tsx
-└── App.tsx
+│   ├── theme.ts
+│   └── global.ts
+│
+├── App.tsx
+└── main.tsx
 
 ---
 
