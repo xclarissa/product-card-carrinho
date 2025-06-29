@@ -1,40 +1,37 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Button from './components/button'
-import { Form } from './components/formulario'
+import { ProductCard } from "./components/ProductCard";
+import { products } from "./data/products";
+import { Navbar } from "./components/Navbar";
+import { ProductsGrid } from "./App.styles";
+import { useSearch } from "./contexts/SearchContext";
+import { useCart } from "./contexts/CartContext";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { searchTerm } = useSearch();
+  const { addItem } = useCart();
 
-  async function fetchCharacter() {
-    try {
-      const response = await fetch('https://rickandmortyapi.com/api/character');
-      return response.json();
-    } catch (error) {
-      console.error(error);
-      
-    }
-  }
-
-  useEffect(() => {
-    fetchCharacter()
-  }, [])
-
-  const handleClick = () => {
-    console.log("Clicou no app");
-    setCount(count + 1)
- 
-  }
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
-    <Form count={count} onClick={handleClick} />
-      <Button variant='primary' size='md' onClick={() => setCount(count - 1)}>-</Button>{count}
-      <Button variant='terciary' size='md' onClick={() => setCount(count + 1)} >+</Button>
+      <Navbar />
+      <ProductsGrid>
+        {filteredProducts.map(({ id, imageUrl, title, price, isAvailable }) => (
+          <ProductCard
+            key={id}
+            title={title}
+            price={price}
+            imageUrl={imageUrl}
+            isAvailable={isAvailable}
+            onAddToCart={() => {
+              addItem({ id, imageUrl, isAvailable, price, title });
+            }}
+          />
+        ))}
+      </ProductsGrid>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
