@@ -13,7 +13,7 @@ interface ProductCardProps {
   price: number;
   imageUrl: string;
   isAvailable: boolean;
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (e: React.MouseEvent) => void;
 }
 
 export const ProductCard = ({

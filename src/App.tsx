@@ -17,15 +17,16 @@ function App() {
     <>
       <Navbar />
       <ProductsGrid>
-        {filteredProducts.map(({ id, imageUrl, title, price, isAvailable }) => (
+        {filteredProducts.map((product) => (
           <ProductCard
-            key={id}
-            title={title}
-            price={price}
-            imageUrl={imageUrl}
-            isAvailable={isAvailable}
-            onAddToCart={() => {
-              addItem({ id, imageUrl, isAvailable, price, title });
+            key={product.id} 
+            title={product.title}
+            price={product.price}
+            imageUrl={product.imageUrl}
+            isAvailable={product.isAvailable}
+            onAddToCart={(e) => {
+              e.preventDefault();
+              addItem(product);
             }}
           />
         ))}
