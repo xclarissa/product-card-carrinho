@@ -17,34 +17,34 @@ export const CartProvider = ({ children }: ICartProps) => {
     setItems((prevItems) => {
       const existingItems = prevItems.find((item) => item.id === product.id);
       if (existingItems) {
-        console.log('entrou no if')
         return prevItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      console.log('caiu fora')
       return [...prevItems, { ...product, quantity: 1 }];
     });
   };
 
   const removeItem = (productId: number) => {
     setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity: item.id - 1 } : item
-      ).filter(item => item.quantity > 0)
+      prevItems
+        .map((item) =>
+          item.id === productId ? { ...item, quantity: item.id - 1 } : item
+        )
+        .filter((item) => item.quantity > 0)
     );
   };
 
   const clearCart = () => {
-    setItems([])
+    setItems([]);
   };
 
   const getTotal = () => {
-    return items.reduce((total, item ) => total + item.price * item.quantity, 0)
+    return items.reduce((total, item) => total + item.price * item.quantity, 0);
   };
-
+ 
   return (
     <CartContext.Provider
       value={{ items, addItem, removeItem, clearCart, getTotal }}
