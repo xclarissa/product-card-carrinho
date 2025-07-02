@@ -6,7 +6,6 @@ import {
   AddButton,
   ProductImage,
 } from "./ProductCard.styles";
-import { Product } from "../../data/products";
 
 interface ProductCardProps {
   title: string;

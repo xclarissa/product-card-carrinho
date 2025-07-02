@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const NavContainer = styled.div`
     width: 100vw; 
-    padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
-    background-color: ${({ theme }) => theme.colors.primary};
+    padding: ${({ theme }) => theme.spacing?.md} ${({ theme }) => theme.spacing?.lg};
+    background-color: ${({ theme }) => theme.colors?.primary};
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors?.white};
 
     @media (max-width: 600px) {
         flex-direction: column;
@@ -37,8 +37,8 @@ export const ButtonGroup = styled.div`
 
 export const Button = styled.button`
   padding: 0.5rem 1rem;
-  background-color: ${({ theme }) => theme.colors.white};
-  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors?.white};
+  color: ${({ theme }) => theme.colors?.primary};
   border-radius: 4px;
   font-weight: bold;
 `;
