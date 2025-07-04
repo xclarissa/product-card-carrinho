@@ -1,6 +1,6 @@
-import { ChangeEvent, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { CartContextType, CartItem } from "./types";
-import { Product, products } from "../../data/products";
+import { Product } from "../../data/products";
 
 interface ICartProps {
   children: React.ReactNode;
@@ -31,9 +31,9 @@ export const CartProvider = ({ children }: ICartProps) => {
     setItems((prevItems) =>
       prevItems
         .map((item) =>
-          item.id === productId ? { ...item, quantity: item.id - 1 } : item
+          item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
         )
-        .filter((item) => item.quantity > 0)
+        .filter((item) => item?.quantity > 0)
     );
   };
 
@@ -47,7 +47,7 @@ export const CartProvider = ({ children }: ICartProps) => {
  
   return (
     <CartContext.Provider
-      value={{ items, addItem, removeItem, clearCart, getTotal }}
+      value={{ items, addItem, removeItem, clearCart, getTotal, setItems }}
     >
       {children}
     </CartContext.Provider>

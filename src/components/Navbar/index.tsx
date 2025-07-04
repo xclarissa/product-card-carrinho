@@ -8,11 +8,14 @@ import {
 } from "./Navbar.styles";
 import { useSearch } from "../../contexts/SearchContext";
 import { useCart } from "../../contexts/CartContext";
+import { CartDrawer } from "../CartDrawer";
 
 export const Navbar = () => {
   const { items, getTotal } = useCart();
   const { searchTerm, setSearchTerm } = useSearch();
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const totalItems = items.reduce((sum, item) => sum + item?.quantity, 0);
 
@@ -32,10 +35,11 @@ export const Navbar = () => {
       <ButtonGroup>
         <span>{totalItems}</span>
         <span>Total: R$ {getTotal().toFixed(2)}</span>
-        <Button title="Carrinho 🛒">🛒</Button>
-        <Button onClick={handleLoginLogout}>
+        <Button onClick={() => setIsCartOpen(true)} title="Carrinho 🛒">🛒</Button>
+        <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)}/>
+        {/* <Button onClick={handleLoginLogout}>
           {isLoggedIn ? "Logout" : "Login"}
-        </Button>
+        </Button> */}
       </ButtonGroup>
     </NavContainer>
   );

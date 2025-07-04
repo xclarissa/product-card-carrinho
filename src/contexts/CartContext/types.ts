@@ -10,4 +10,5 @@ export interface CartContextType {
     removeItem: (productId: number) => void;
     clearCart: () => void;
     getTotal: () => number;
+    setItems: React.Dispatch<React.SetStateAction<CartItem[]>>
 }
